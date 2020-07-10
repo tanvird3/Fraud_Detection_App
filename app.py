@@ -179,8 +179,10 @@ app.layout = html.Div(
     ],
     style={
         "display": "inline-block",
-        "verticalAlign": "middle",
         "backgroundColor": colors["background"],
+        "width": "100%",
+        "align-items": "center",
+        "justify-content": "center",
     },
 )
 
