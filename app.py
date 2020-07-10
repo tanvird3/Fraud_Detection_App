@@ -14,6 +14,7 @@ server = app.server
 
 
 # format the app
+
 colors = {"background": "#111111", "text": "#009E73"}
 
 app.layout = html.Div(
@@ -24,25 +25,29 @@ app.layout = html.Div(
         # step
         html.Div(
             [
-                html.H3("OTP Sent", style={"paddingRight": "30px"}),
+                html.H3(
+                    "OTP Sent (times):",
+                    style={"paddingRight": "30px"},
+                ),
                 dcc.Input(
                     id="Step",
                     type="number",
                     min=0,
                     value=800,
-                    style={"fontsize": 15, "width": 55, "color": colors["text"]},
+                    style={"fontsize": 15, "width": 55, "color": colors["text"],},
                 ),
             ],
             style={
                 "display": "inline-block",
-                "verticalAlign": "middle",
+                "align-items": "center",
+                "justify-content": "center",
                 "color": colors["text"],
             },
         ),
         # sender's original balance
         html.Div(
             [
-                html.H3("Sender's Orig Balance", style={"paddingRight": "30px"}),
+                html.H3("Sender's Original Balance:", style={"paddingRight": "30px"}),
                 dcc.Input(
                     id="oldbalanceOrg",
                     type="number",
@@ -53,14 +58,15 @@ app.layout = html.Div(
             ],
             style={
                 "display": "inline-block",
-                "verticalAlign": "middle",
+                "align-items": "center",
+                "justify-content": "center",
                 "color": colors["text"],
             },
         ),
         # new balance origin
         html.Div(
             [
-                html.H3("Sender's New Balance", style={"paddingRight": "30px"}),
+                html.H3("Sender's New Balance:", style={"paddingRight": "30px"}),
                 dcc.Input(
                     id="newbalanceOrig",
                     type="number",
@@ -71,14 +77,15 @@ app.layout = html.Div(
             ],
             style={
                 "display": "inline-block",
-                "verticalAlign": "middle",
+                "align-items": "center",
+                "justify-content": "center",
                 "color": colors["text"],
             },
         ),
         # old balance destination
         html.Div(
             [
-                html.H3("Receiver's Orig Balance", style={"paddingRight": "30px"}),
+                html.H3("Receiver's Original Balance:", style={"paddingRight": "30px"}),
                 dcc.Input(
                     id="oldbalanceDest",
                     type="number",
@@ -89,14 +96,15 @@ app.layout = html.Div(
             ],
             style={
                 "display": "inline-block",
-                "verticalAlign": "middle",
+                "align-items": "center",
+                "justify-content": "center",
                 "color": colors["text"],
             },
         ),
         # new balance destination
         html.Div(
             [
-                html.H3("Sender's New Balance", style={"paddingRight": "30px"}),
+                html.H3("Sender's New Balance:", style={"paddingRight": "30px"}),
                 dcc.Input(
                     id="newbalanceDest",
                     type="number",
@@ -107,14 +115,15 @@ app.layout = html.Div(
             ],
             style={
                 "display": "inline-block",
-                "verticalAlign": "middle",
+                "align-items": "center",
+                "justify-content": "center",
                 "color": colors["text"],
             },
         ),
         # recognized device
         html.Div(
             [
-                html.H3("Unrecognized Device", style={"paddingRight": "30px"}),
+                html.H3("Unrecognized Device:", style={"paddingRight": "30px"}),
                 dcc.Dropdown(
                     id="isUnrecognizedDevice",
                     options=[{"label": "No", "value": 0}, {"label": "Yes", "value": 1}],
