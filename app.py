@@ -12,10 +12,15 @@ import pickle
 app = dash.Dash()
 server = app.server
 
-# app layout
+
+# format the app
+colors = {"background": "#111111", "text": "#009E73"}
+
 app.layout = html.Div(
     children=[
-        html.H1("Fraud Detection", style={"textAlign": "center"}),
+        html.H1(
+            "Fraud Detection", style={"textAlign": "center", "color": colors["text"]}
+        ),
         # step
         html.Div(
             [
@@ -25,66 +30,86 @@ app.layout = html.Div(
                     type="number",
                     min=0,
                     value=800,
-                    style={"fontsize": 24, "width": 75},
+                    style={"fontsize": 15, "width": 55, "color": colors["text"]},
                 ),
             ],
-            style={"display": "inline-block", "verticalAlign": "middle"},
+            style={
+                "display": "inline-block",
+                "verticalAlign": "middle",
+                "color": colors["text"],
+            },
         ),
-        # old balance origin
+        # sender's original balance
         html.Div(
             [
-                html.H3("Sender's Balance", style={"paddingRight": "30px"}),
+                html.H3("Sender's Orig Balance", style={"paddingRight": "30px"}),
                 dcc.Input(
                     id="oldbalanceOrg",
                     type="number",
                     min=0,
                     value=10000,
-                    style={"fontsize": 24, "width": 75},
+                    style={"fontsize": 15, "width": 55, "color": colors["text"]},
                 ),
             ],
-            style={"display": "inline-block", "verticalAlign": "middle"},
+            style={
+                "display": "inline-block",
+                "verticalAlign": "middle",
+                "color": colors["text"],
+            },
         ),
         # new balance origin
         html.Div(
             [
-                html.H3("New Balance", style={"paddingRight": "30px"}),
+                html.H3("Sender's New Balance", style={"paddingRight": "30px"}),
                 dcc.Input(
                     id="newbalanceOrig",
                     type="number",
                     min=0,
                     value=9000,
-                    style={"fontsize": 24, "width": 75},
+                    style={"fontsize": 15, "width": 55, "color": colors["text"]},
                 ),
             ],
-            style={"display": "inline-block", "verticalAlign": "middle"},
+            style={
+                "display": "inline-block",
+                "verticalAlign": "middle",
+                "color": colors["text"],
+            },
         ),
         # old balance destination
         html.Div(
             [
-                html.H3("Receiver's Balance", style={"paddingRight": "30px"}),
+                html.H3("Receiver's Orig Balance", style={"paddingRight": "30px"}),
                 dcc.Input(
                     id="oldbalanceDest",
                     type="number",
                     min=0,
                     value=10000,
-                    style={"fontsize": 24, "width": 75},
+                    style={"fontsize": 15, "width": 55, "color": colors["text"]},
                 ),
             ],
-            style={"display": "inline-block", "verticalAlign": "middle"},
+            style={
+                "display": "inline-block",
+                "verticalAlign": "middle",
+                "color": colors["text"],
+            },
         ),
         # new balance destination
         html.Div(
             [
-                html.H3("New Balance", style={"paddingRight": "30px"}),
+                html.H3("Sender's New Balance", style={"paddingRight": "30px"}),
                 dcc.Input(
                     id="newbalanceDest",
                     type="number",
                     min=0,
                     value=11000,
-                    style={"fontsize": 24, "width": 75},
+                    style={"fontsize": 15, "width": 55, "color": colors["text"]},
                 ),
             ],
-            style={"display": "inline-block", "verticalAlign": "middle"},
+            style={
+                "display": "inline-block",
+                "verticalAlign": "middle",
+                "color": colors["text"],
+            },
         ),
         # recognized device
         html.Div(
@@ -95,41 +120,68 @@ app.layout = html.Div(
                     options=[{"label": "No", "value": 0}, {"label": "Yes", "value": 1}],
                     value=1,
                     clearable=False,
-                    style={"fontsize": 24, "width": 75},
+                    style={"fontsize": 15, "width": 55, "color": colors["text"]},
                 ),
             ],
-            style={"display": "inline-block", "verticalAlign": "middle"},
+            style={
+                "width": "100%",
+                "display": "flex",
+                "align-items": "center",
+                "justify-content": "center",
+                "color": colors["text"],
+            },
         ),
         # recognized location
         html.Div(
             [
-                html.H3("New Location"),
+                html.H3("Unrecongnized Location: ", style={"paddingRight": "30px"}),
                 dcc.Dropdown(
                     id="isOutsideLocation",
                     options=[{"label": "No", "value": 0}, {"label": "Yes", "value": 1}],
                     value=1,
                     clearable=False,
-                    style={"fontsize": 24, "width": 75},
+                    style={"fontsize": 15, "width": 55, "color": colors["text"]},
                 ),
             ],
-            style={"display": "inline-block", "verticalAlign": "middle"},
+            style={
+                "width": "100%",
+                "display": "flex",
+                "align-items": "center",
+                "justify-content": "center",
+                "color": colors["text"],
+            },
         ),
         # the submit button
         html.Div(
             [
                 html.Button(
                     id="submit-button",
-                    children="View",
+                    children="Find",
                     n_clicks=0,
-                    style={"fontSize": 20, "marginLeft": "20px"},
+                    style={
+                        "fontSize": 20,
+                        "marginLeft": "20px",
+                        "color": colors["text"],
+                    },
                 )
             ],
-            style={"display": "inline-block", "verticalAlign": "bottom"},
+            style={
+                "width": "100%",
+                "display": "flex",
+                "align-items": "center",
+                "justify-content": "center",
+                "color": colors["text"],
+            },
         ),
         # the graphs
         dcc.Graph(id="Verdict"),
         dcc.Graph(id="Model_Evaluation"),
-    ]
+    ],
+    style={
+        "display": "inline-block",
+        "verticalAlign": "middle",
+        "backgroundColor": colors["background"],
+    },
 )
 
 # app functions
@@ -161,6 +213,7 @@ def Fraud_Verdict(
     isUnrecognizedDevice,
     isOutsideLocation,
 ):
+    # test case plot
     test_case = [
         Step,
         oldbalanceOrg,
@@ -194,6 +247,11 @@ def Fraud_Verdict(
         yaxis=dict(title="Probability"),
     )
     verdict_fig = go.Figure(data=[verdict_plot], layout=verdict_layout)
+    verdict_fig.update_layout(
+        plot_bgcolor=colors["background"],
+        font=dict(color=colors["text"]),
+        paper_bgcolor=colors["background"],
+    )
 
     # model evaluation table
     evaluation = pd.read_csv("report.csv")
@@ -222,6 +280,11 @@ def Fraud_Verdict(
     )
 
     eval_fig = go.Figure(data=[eval_table], layout=eval_layout)
+    eval_fig.update_layout(
+        plot_bgcolor=colors["background"],
+        font=dict(color=colors["text"]),
+        paper_bgcolor=colors["background"],
+    )
 
     return (verdict_fig, eval_fig)
 
