@@ -27,14 +27,19 @@ app.layout = html.Div(
             [
                 html.H3(
                     "OTP Sent (times):",
-                    style={"paddingRight": "30px"},
+                    style={"paddingRight": "30px", "marginLeft": 50},
                 ),
                 dcc.Input(
                     id="Step",
                     type="number",
                     min=0,
                     value=800,
-                    style={"fontsize": 15, "width": 55, "color": colors["text"],},
+                    style={
+                        "fontsize": 15,
+                        "width": 55,
+                        "color": colors["text"],
+                        "marginLeft": 50,
+                    },
                 ),
             ],
             style={
@@ -104,7 +109,7 @@ app.layout = html.Div(
         # new balance destination
         html.Div(
             [
-                html.H3("Sender's New Balance:", style={"paddingRight": "30px"}),
+                html.H3("Sender's New Balance:", style={"paddingRight": "0px"}),
                 dcc.Input(
                     id="newbalanceDest",
                     type="number",
@@ -154,6 +159,7 @@ app.layout = html.Div(
             ],
             style={
                 "width": "100%",
+                "height": "100%",
                 "display": "flex",
                 "align-items": "center",
                 "justify-content": "center",
@@ -189,6 +195,7 @@ app.layout = html.Div(
     style={
         "display": "inline-block",
         "backgroundColor": colors["background"],
+        "horizontalAlign": "middle",
         "width": "100%",
         "align-items": "center",
         "justify-content": "center",
