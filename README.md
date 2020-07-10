@@ -1,4 +1,4 @@
-# Currency pair tracker (updates every minute)
+# Fraudulent Transaction Detector
 
 This app detects fraudulent transactions based on a fitted Xtreme Gradient Boosting model (that takes logistic regression as the core model). 
 
