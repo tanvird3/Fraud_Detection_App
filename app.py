@@ -24,21 +24,13 @@ app.layout = html.Div(
         # step
         html.Div(
             [
-                html.H3(
-                    "OTP Sent (times):",
-                    style={"paddingRight": "30px", "marginLeft": 90},
-                ),
+                html.H3("OTP Sent (times):", style={"paddingRight": "30px"},),
                 dcc.Input(
                     id="Step",
                     type="number",
                     min=0,
                     value=800,
-                    style={
-                        "fontsize": 15,
-                        "width": 55,
-                        "color": colors["text"],
-                        "marginLeft": 90,
-                    },
+                    style={"fontsize": 15, "width": 55, "color": colors["text"],},
                 ),
             ],
             style={
@@ -46,6 +38,7 @@ app.layout = html.Div(
                 "align-items": "center",
                 "justify-content": "center",
                 "color": colors["text"],
+                "marginLeft": 90,
             },
         ),
         # sender's original balance
@@ -127,21 +120,13 @@ app.layout = html.Div(
         # recognized device
         html.Div(
             [
-                html.H3(
-                    "Unrecognized Device:",
-                    style={"paddingRight": "30px", "paddingLeft": 420},
-                ),
+                html.H3("Unrecognized Device:", style={"paddingRight": "30px"},),
                 dcc.Dropdown(
                     id="isUnrecognizedDevice",
                     options=[{"label": "No", "value": 0}, {"label": "Yes", "value": 1}],
                     value=1,
                     clearable=False,
-                    style={
-                        "fontsize": 15,
-                        "width": 55,
-                        "color": colors["text"],
-                        "marginLeft": 210,
-                    },
+                    style={"fontsize": 15, "width": 55, "color": colors["text"],},
                 ),
             ],
             style={
@@ -149,6 +134,7 @@ app.layout = html.Div(
                 "align-items": "center",
                 "justify-content": "center",
                 "color": colors["text"],
+                "marginLeft": 420,
             },
         ),
         # recognized location
