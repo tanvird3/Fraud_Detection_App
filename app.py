@@ -12,7 +12,6 @@ import pickle
 app = dash.Dash()
 server = app.server
 
-
 # format the app
 
 colors = {"background": "#111111", "text": "#009E73"}
@@ -27,7 +26,7 @@ app.layout = html.Div(
             [
                 html.H3(
                     "OTP Sent (times):",
-                    style={"paddingRight": "30px", "marginLeft": 100},
+                    style={"paddingRight": "30px", "marginLeft": 90},
                 ),
                 dcc.Input(
                     id="Step",
@@ -38,7 +37,7 @@ app.layout = html.Div(
                         "fontsize": 15,
                         "width": 55,
                         "color": colors["text"],
-                        "marginLeft": 100,
+                        "marginLeft": 90,
                     },
                 ),
             ],
@@ -109,7 +108,7 @@ app.layout = html.Div(
         # new balance destination
         html.Div(
             [
-                html.H3("Sender's New Balance:", style={"paddingRight": "0px"}),
+                html.H3("Sender's New Balance:", style={"paddingRight": "30px"}),
                 dcc.Input(
                     id="newbalanceDest",
                     type="number",
@@ -128,18 +127,25 @@ app.layout = html.Div(
         # recognized device
         html.Div(
             [
-                html.H3("Unrecognized Device:", style={"paddingRight": "30px"}),
+                html.H3(
+                    "Unrecognized Device:",
+                    style={"paddingRight": "30px", "paddingLeft": 420},
+                ),
                 dcc.Dropdown(
                     id="isUnrecognizedDevice",
                     options=[{"label": "No", "value": 0}, {"label": "Yes", "value": 1}],
                     value=1,
                     clearable=False,
-                    style={"fontsize": 15, "width": 55, "color": colors["text"]},
+                    style={
+                        "fontsize": 15,
+                        "width": 55,
+                        "color": colors["text"],
+                        "marginLeft": 210,
+                    },
                 ),
             ],
             style={
-                "width": "100%",
-                "display": "flex",
+                "display": "inline-block",
                 "align-items": "center",
                 "justify-content": "center",
                 "color": colors["text"],
@@ -148,19 +154,17 @@ app.layout = html.Div(
         # recognized location
         html.Div(
             [
-                html.H3("Unrecongnized Location: ", style={"paddingRight": "30px"}),
+                html.H3("Unrecongnized Location: ", style={"paddingRight": "30px"},),
                 dcc.Dropdown(
                     id="isOutsideLocation",
                     options=[{"label": "No", "value": 0}, {"label": "Yes", "value": 1}],
                     value=1,
                     clearable=False,
-                    style={"fontsize": 15, "width": 55, "color": colors["text"]},
+                    style={"fontsize": 15, "width": 55, "color": colors["text"],},
                 ),
             ],
             style={
-                "width": "100%",
-                "height": "100%",
-                "display": "flex",
+                "display": "inline-block",
                 "align-items": "center",
                 "justify-content": "center",
                 "color": colors["text"],
@@ -173,16 +177,11 @@ app.layout = html.Div(
                     id="submit-button",
                     children="Find",
                     n_clicks=0,
-                    style={
-                        "fontSize": 20,
-                        "marginLeft": "20px",
-                        "color": colors["text"],
-                    },
+                    style={"fontSize": 25, "color": colors["text"]},
                 )
             ],
             style={
-                "width": "100%",
-                "display": "flex",
+                "display": "inline-block",
                 "align-items": "center",
                 "justify-content": "center",
                 "color": colors["text"],
