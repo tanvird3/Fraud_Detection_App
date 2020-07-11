@@ -27,7 +27,7 @@ app.layout = html.Div(
             [
                 html.H3(
                     "OTP Sent (times):",
-                    style={"paddingRight": "30px", "marginLeft": 90},
+                    style={"paddingRight": "30px", "marginLeft": 100},
                 ),
                 dcc.Input(
                     id="Step",
@@ -38,7 +38,7 @@ app.layout = html.Div(
                         "fontsize": 15,
                         "width": 55,
                         "color": colors["text"],
-                        "marginLeft": 90,
+                        "marginLeft": 100,
                     },
                 ),
             ],
@@ -196,7 +196,7 @@ app.layout = html.Div(
         "display": "inline-block",
         "backgroundColor": colors["background"],
         "horizontalAlign": "middle",
-        "width": "100%",
+        "width": 1350,
         "height": "100%",
         "align-items": "center",
         "justify-content": "center",
