@@ -21,153 +21,222 @@ app.layout = html.Div(
         html.H1(
             "Fraud Detection", style={"textAlign": "center", "color": colors["text"]}
         ),
-        # step
+       # the first line of menus
         html.Div(
             [
-                html.H3("OTP Sent (times):", style={"paddingRight": "30px"},),
-                dcc.Input(
-                    id="Step",
-                    type="number",
-                    min=0,
-                    value=800,
-                    style={"fontsize": 15, "width": 55, "color": colors["text"],},
+                # step
+                html.Div(
+                    [
+                        html.H3("OTP Sent (times):", style={"paddingRight": "30px"},), # this style controls the title
+                        dcc.Input(
+                            id="Step",
+                            type="number",
+                            min=0,
+                            value=800,
+                            style={
+                                "fontsize": 15,
+                                "width": 55,
+                                "color": colors["text"], # this style controls the input box
+                            },
+                        ),
+                    ],
+                    style={
+                        "display": "inline-block",
+                        "align-items": "center",
+                        "justify-content": "center",
+                        "color": colors["text"], # this style controls the overall menu
+                        # "marginLeft": 90,
+                    },
+                ),
+                # sender's original balance
+                html.Div(
+                    [
+                        html.H3(
+                            "Sender's Original Balance:", style={"paddingRight": "30px"}
+                        ),
+                        dcc.Input(
+                            id="oldbalanceOrg",
+                            type="number",
+                            min=0,
+                            value=10000,
+                            style={
+                                "fontsize": 15,
+                                "width": 55,
+                                "color": colors["text"],
+                            },
+                        ),
+                    ],
+                    style={
+                        "display": "inline-block",
+                        "align-items": "center",
+                        "justify-content": "center",
+                        "color": colors["text"],
+                    },
+                ),
+                # new balance origin
+                html.Div(
+                    [
+                        html.H3(
+                            "Sender's New Balance:", style={"paddingRight": "30px"}
+                        ),
+                        dcc.Input(
+                            id="newbalanceOrig",
+                            type="number",
+                            min=0,
+                            value=9000,
+                            style={
+                                "fontsize": 15,
+                                "width": 55,
+                                "color": colors["text"],
+                            },
+                        ),
+                    ],
+                    style={
+                        "display": "inline-block",
+                        "align-items": "center",
+                        "justify-content": "center",
+                        "color": colors["text"],
+                    },
+                ),
+                # old balance destination
+                html.Div(
+                    [
+                        html.H3(
+                            "Receiver's Original Balance:",
+                            style={"paddingRight": "30px"},
+                        ),
+                        dcc.Input(
+                            id="oldbalanceDest",
+                            type="number",
+                            min=0,
+                            value=10000,
+                            style={
+                                "fontsize": 15,
+                                "width": 55,
+                                "color": colors["text"],
+                            },
+                        ),
+                    ],
+                    style={
+                        "display": "inline-block",
+                        "align-items": "center",
+                        "justify-content": "center",
+                        "color": colors["text"],
+                    },
+                ),
+                # new balance destination
+                html.Div(
+                    [
+                        html.H3(
+                            "Sender's New Balance:", style={"paddingRight": "30px"}
+                        ),
+                        dcc.Input(
+                            id="newbalanceDest",
+                            type="number",
+                            min=0,
+                            value=11000,
+                            style={
+                                "fontsize": 15,
+                                "width": 55,
+                                "color": colors["text"],
+                            },
+                        ),
+                    ],
+                    style={
+                        "display": "inline-block",
+                        "align-items": "center",
+                        "justify-content": "center",
+                        "color": colors["text"],
+                    },
                 ),
             ],
             style={
-                "display": "inline-block",
+                "display": "flex",
                 "align-items": "center",
                 "justify-content": "center",
                 "color": colors["text"],
-                "marginLeft": 90,
             },
         ),
-        # sender's original balance
+        # the second line of menus
         html.Div(
             [
-                html.H3("Sender's Original Balance:", style={"paddingRight": "30px"}),
-                dcc.Input(
-                    id="oldbalanceOrg",
-                    type="number",
-                    min=0,
-                    value=10000,
-                    style={"fontsize": 15, "width": 55, "color": colors["text"]},
+                # unrecognized device
+                html.Div(
+                    [
+                        html.H3(
+                            "Unrecognized Device:", style={"paddingRight": "30px"},
+                        ),
+                        dcc.Dropdown(
+                            id="isUnrecognizedDevice",
+                            options=[
+                                {"label": "No", "value": 0},
+                                {"label": "Yes", "value": 1},
+                            ],
+                            value=1,
+                            clearable=False,
+                            style={
+                                "fontsize": 15,
+                                "width": 55,
+                                "color": colors["text"],
+                            },
+                        ),
+                    ],
+                    style={
+                        "display": "inline-block",
+                        "align-items": "center",
+                        "justify-content": "center",
+                        "color": colors["text"],
+                        # "marginLeft": 420,
+                    },
+                ),
+                # recognized location
+                html.Div(
+                    [
+                        html.H3(
+                            "Unrecongnized Location: ", style={"paddingRight": "30px"},
+                        ),
+                        dcc.Dropdown(
+                            id="isOutsideLocation",
+                            options=[
+                                {"label": "No", "value": 0},
+                                {"label": "Yes", "value": 1},
+                            ],
+                            value=1,
+                            clearable=False,
+                            style={
+                                "fontsize": 15,
+                                "width": 55,
+                                "color": colors["text"],
+                            },
+                        ),
+                    ],
+                    style={
+                        "display": "inline-block",
+                        "align-items": "center",
+                        "justify-content": "center",
+                        "color": colors["text"],
+                    },
+                ),
+                # the submit button
+                html.Div(
+                    [
+                        html.Button(
+                            id="submit-button",
+                            children="Find",
+                            n_clicks=0,
+                            style={"fontSize": 25, "color": colors["text"]},
+                        )
+                    ],
+                    style={
+                        "display": "inline-block",
+                        "align-items": "center",
+                        "justify-content": "center",
+                        "color": colors["text"],
+                    },
                 ),
             ],
             style={
-                "display": "inline-block",
-                "align-items": "center",
-                "justify-content": "center",
-                "color": colors["text"],
-            },
-        ),
-        # new balance origin
-        html.Div(
-            [
-                html.H3("Sender's New Balance:", style={"paddingRight": "30px"}),
-                dcc.Input(
-                    id="newbalanceOrig",
-                    type="number",
-                    min=0,
-                    value=9000,
-                    style={"fontsize": 15, "width": 55, "color": colors["text"]},
-                ),
-            ],
-            style={
-                "display": "inline-block",
-                "align-items": "center",
-                "justify-content": "center",
-                "color": colors["text"],
-            },
-        ),
-        # old balance destination
-        html.Div(
-            [
-                html.H3("Receiver's Original Balance:", style={"paddingRight": "30px"}),
-                dcc.Input(
-                    id="oldbalanceDest",
-                    type="number",
-                    min=0,
-                    value=10000,
-                    style={"fontsize": 15, "width": 55, "color": colors["text"]},
-                ),
-            ],
-            style={
-                "display": "inline-block",
-                "align-items": "center",
-                "justify-content": "center",
-                "color": colors["text"],
-            },
-        ),
-        # new balance destination
-        html.Div(
-            [
-                html.H3("Sender's New Balance:", style={"paddingRight": "30px"}),
-                dcc.Input(
-                    id="newbalanceDest",
-                    type="number",
-                    min=0,
-                    value=11000,
-                    style={"fontsize": 15, "width": 55, "color": colors["text"]},
-                ),
-            ],
-            style={
-                "display": "inline-block",
-                "align-items": "center",
-                "justify-content": "center",
-                "color": colors["text"],
-            },
-        ),
-        # recognized device
-        html.Div(
-            [
-                html.H3("Unrecognized Device:", style={"paddingRight": "30px"},),
-                dcc.Dropdown(
-                    id="isUnrecognizedDevice",
-                    options=[{"label": "No", "value": 0}, {"label": "Yes", "value": 1}],
-                    value=1,
-                    clearable=False,
-                    style={"fontsize": 15, "width": 55, "color": colors["text"],},
-                ),
-            ],
-            style={
-                "display": "inline-block",
-                "align-items": "center",
-                "justify-content": "center",
-                "color": colors["text"],
-                "marginLeft": 420,
-            },
-        ),
-        # recognized location
-        html.Div(
-            [
-                html.H3("Unrecongnized Location: ", style={"paddingRight": "30px"},),
-                dcc.Dropdown(
-                    id="isOutsideLocation",
-                    options=[{"label": "No", "value": 0}, {"label": "Yes", "value": 1}],
-                    value=1,
-                    clearable=False,
-                    style={"fontsize": 15, "width": 55, "color": colors["text"],},
-                ),
-            ],
-            style={
-                "display": "inline-block",
-                "align-items": "center",
-                "justify-content": "center",
-                "color": colors["text"],
-            },
-        ),
-        # the submit button
-        html.Div(
-            [
-                html.Button(
-                    id="submit-button",
-                    children="Find",
-                    n_clicks=0,
-                    style={"fontSize": 25, "color": colors["text"]},
-                )
-            ],
-            style={
-                "display": "inline-block",
+                "display": "flex",
                 "align-items": "center",
                 "justify-content": "center",
                 "color": colors["text"],
