@@ -21,13 +21,15 @@ app.layout = html.Div(
         html.H1(
             "Fraud Detection", style={"textAlign": "center", "color": colors["text"]}
         ),
-       # the first line of menus
+        # the first line of menus
         html.Div(
             [
                 # step
                 html.Div(
                     [
-                        html.H3("OTP Sent (times):", style={"paddingRight": "30px"},), # this style controls the title
+                        html.H3(
+                            "OTP Sent (times):", style={"paddingRight": "30px"},
+                        ),  # this style controls the title
                         dcc.Input(
                             id="Step",
                             type="number",
@@ -36,16 +38,16 @@ app.layout = html.Div(
                             style={
                                 "fontsize": 15,
                                 "width": 55,
-                                "color": colors["text"], # this style controls the input box
+                                "color": colors[
+                                    "text"
+                                ],  # this style controls the input box
                             },
                         ),
                     ],
                     style={
                         "display": "inline-block",
                         "align-items": "center",
-                        "justify-content": "center",
-                        "color": colors["text"], # this style controls the overall menu
-                        # "marginLeft": 90,
+                        "justify-content": "center",  # this style controls the overall menu
                     },
                 ),
                 # sender's original balance
@@ -70,7 +72,6 @@ app.layout = html.Div(
                         "display": "inline-block",
                         "align-items": "center",
                         "justify-content": "center",
-                        "color": colors["text"],
                     },
                 ),
                 # new balance origin
@@ -95,7 +96,6 @@ app.layout = html.Div(
                         "display": "inline-block",
                         "align-items": "center",
                         "justify-content": "center",
-                        "color": colors["text"],
                     },
                 ),
                 # old balance destination
@@ -121,7 +121,6 @@ app.layout = html.Div(
                         "display": "inline-block",
                         "align-items": "center",
                         "justify-content": "center",
-                        "color": colors["text"],
                     },
                 ),
                 # new balance destination
@@ -146,7 +145,6 @@ app.layout = html.Div(
                         "display": "inline-block",
                         "align-items": "center",
                         "justify-content": "center",
-                        "color": colors["text"],
                     },
                 ),
             ],
@@ -154,7 +152,9 @@ app.layout = html.Div(
                 "display": "flex",
                 "align-items": "center",
                 "justify-content": "center",
-                "color": colors["text"],
+                "color": colors[
+                    "text"
+                ],  # this style controls the entire first line of input
             },
         ),
         # the second line of menus
@@ -185,8 +185,6 @@ app.layout = html.Div(
                         "display": "inline-block",
                         "align-items": "center",
                         "justify-content": "center",
-                        "color": colors["text"],
-                        # "marginLeft": 420,
                     },
                 ),
                 # recognized location
@@ -214,7 +212,6 @@ app.layout = html.Div(
                         "display": "inline-block",
                         "align-items": "center",
                         "justify-content": "center",
-                        "color": colors["text"],
                     },
                 ),
                 # the submit button
@@ -231,7 +228,6 @@ app.layout = html.Div(
                         "display": "inline-block",
                         "align-items": "center",
                         "justify-content": "center",
-                        "color": colors["text"],
                     },
                 ),
             ],
@@ -239,7 +235,9 @@ app.layout = html.Div(
                 "display": "flex",
                 "align-items": "center",
                 "justify-content": "center",
-                "color": colors["text"],
+                "color": colors[
+                    "text"
+                ],  # this style controls the entire second line of input
             },
         ),
         # the graphs
@@ -253,7 +251,7 @@ app.layout = html.Div(
         "width": 1350,
         "height": "100%",
         "align-items": "center",
-        "justify-content": "center",
+        "justify-content": "center",  # this style controls the entire app
     },
 )
 
