@@ -28,13 +28,13 @@ app.layout = html.Div(
                 html.Div(
                     [
                         html.H3(
-                            "OTP Sent (times):", style={"paddingRight": "30px"},
+                            "OTP Requested (times):", style={"paddingRight": "30px"},
                         ),  # this style controls the title
                         dcc.Input(
                             id="Step",
                             type="number",
                             min=0,
-                            value=800,
+                            value=4,
                             style={
                                 "fontsize": 15,
                                 "width": 55,
