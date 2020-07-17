@@ -14,7 +14,7 @@ server = app.server
 
 # format the app
 
-colors = {"background": "#111111", "text": "#009E73"}
+colors = {"background": "#111111", "text": "#00FF00"} 
 
 app.layout = html.Div(
     children=[
