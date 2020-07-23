@@ -242,6 +242,7 @@ app.layout = html.Div(
         ),
         # the graphs
         dcc.Graph(id="Verdict"),
+        dcc.Graph(id="Coef_Value"),
         dcc.Graph(id="Model_Evaluation"),
     ],
     style={
@@ -259,6 +260,7 @@ app.layout = html.Div(
 @app.callback(
     [
         Output(component_id="Verdict", component_property="figure"),
+        Output(component_id="Coef_Value", component_property="figure"),
         Output(component_id="Model_Evaluation", component_property="figure"),
     ],
     [Input("submit-button", "n_clicks")],
@@ -323,6 +325,29 @@ def Fraud_Verdict(
         font=dict(color=colors["text"]),
         paper_bgcolor=colors["background"],
     )
+    
+    # Model Coef Figure
+    ft_importance = pd.DataFrame(
+        loaded_model.best_estimator_.feature_importances_,
+        index=test_case.columns,
+        columns=["Coef"],
+    )
+
+    coef_data = go.Bar(
+        y=ft_importance.index,
+        x=ft_importance["Coef"],
+        orientation="h",
+        marker={"color": "#008080"},
+    )
+    coef_layout = go.Layout(
+        title="Coefficient Values", xaxis=dict(title=""), yaxis=dict(title=""),
+    )
+    coef_fig = go.Figure(data=[coef_data], layout=coef_layout)
+    coef_fig.update_layout(
+        plot_bgcolor=colors["background"],
+        font=dict(color=colors["text"]),
+        paper_bgcolor=colors["background"],
+    )
 
     # model evaluation table
     evaluation = pd.read_csv("report.csv")
@@ -357,7 +382,7 @@ def Fraud_Verdict(
         paper_bgcolor=colors["background"],
     )
 
-    return (verdict_fig, eval_fig)
+    return (verdict_fig, coef_fig, eval_fig)
 
 # launch the app
 if __name__ == "__main__":
