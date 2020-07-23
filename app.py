@@ -313,7 +313,9 @@ def Fraud_Verdict(
     )[0]
     testcase_prob = loaded_model.predict_proba(test_case).tolist()[0]
 
-    verdict_plot = go.Bar(x=["Regular Case", "Fraud Case"], y=testcase_prob)
+    verdict_plot = go.Bar(
+        x=["Regular Case", "Fraud Case"], y=testcase_prob, marker={"color": "#008080"}
+    )
     verdict_layout = go.Layout(
         title="Verdict: " + verdict,
         xaxis=dict(title="Case Category"),
